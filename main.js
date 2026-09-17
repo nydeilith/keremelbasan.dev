@@ -20,10 +20,13 @@
 // Scroll story.
 // Phase A (0–0.28): the phone rises, un-tilts and scales in.
 // Phase B (0.28–1): a strip of screens scrolls inside the phone. Each step dwells,
-// then slides to the next while the phone nudges on its Y axis; captions follow.
+// then slides to the next while the phone nudges on its Y axis. Captions are driven
+// by the same scroll progress, so fast scrolling can't desync them.
+// Falls back to a static stacked layout for reduced motion and short viewports.
 (function () {
+  const root = document.documentElement;
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
-  if (reduce.matches) { document.documentElement.classList.add('reduce-motion'); return; }
+  const short = window.matchMedia('(max-height: 640px), (max-width: 760px) and (max-height: 720px)');
 
   const story = document.querySelector('.story');
   const phone = document.getElementById('phone');
@@ -31,6 +34,9 @@
   const captions = Array.from(document.querySelectorAll('.caption'));
   const steps = captions.length;
   if (!story || !phone || !strip || !steps) return;
+
+  if (reduce.matches) { root.classList.add('reduce-motion'); return; }
+  root.classList.replace('no-js', 'js');
 
   const dots = document.createElement('div');
   dots.className = 'story-dots'; dots.setAttribute('aria-hidden', 'true');
@@ -41,21 +47,25 @@
   const ENTER = 0.28;
   const DWELL = 0.55;              // share of each step spent holding the screen still
   const mobile = window.matchMedia('(max-width: 760px)');
-  let current = -1, ticking = false;
+  let ticking = false;
 
   const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
   const easeOut = t => 1 - Math.pow(1 - t, 3);
   const smooth = t => t * t * (3 - 2 * t);
 
-  function setStep(i) {
-    if (i === current) return;
-    current = i;
-    captions.forEach(c => c.classList.toggle('is-active', +c.dataset.step === i));
-    dotEls.forEach((d, k) => d.classList.toggle('is-active', k === i));
+  function setStatic(on) {
+    root.classList.toggle('static-story', on);
+    if (on) {
+      phone.style.transform = ''; strip.style.transform = '';
+      captions.forEach(c => { c.style.opacity = ''; c.style.transform = ''; });
+    }
   }
 
   function render() {
     ticking = false;
+    if (short.matches) { setStatic(true); return; }
+    setStatic(false);
+
     const rect = story.getBoundingClientRect();
     const vh = window.innerHeight;
     const total = story.offsetHeight - vh;
@@ -83,11 +93,31 @@
     const lift = Math.sin(slide * Math.PI) * -1.2;
     phone.style.transform = `translateY(${y + lift}vh) scale(${s}) rotateX(${rx}deg) rotateY(${ry}deg)`;
 
-    setStep(Math.round(pos));
+    // captions: outgoing fades in the first half of the slide, incoming rises in the second
+    captions.forEach((c, k) => {
+      let o = 0, ty = 18;
+      if (k === i) { o = 1 - clamp(slide * 2, 0, 1); ty = -18 * clamp(slide * 2, 0, 1); }
+      else if (k === i + 1) { const u = clamp(slide * 2 - 1, 0, 1); o = u; ty = 18 * (1 - u); }
+      c.style.opacity = o;
+      c.style.transform = `translateY(${ty}px)`;
+      c.style.pointerEvents = o > 0.5 ? 'auto' : 'none';
+    });
+    const active = Math.round(pos);
+    dotEls.forEach((d, k) => d.classList.toggle('is-active', k === active));
   }
 
   function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(render); } }
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', onScroll);
   render();
+
+  // "Work" should land on the first fully-visible story state, not the entrance phase.
+  document.querySelectorAll('a[href="#work"]').forEach(a => {
+    a.addEventListener('click', e => {
+      if (short.matches) return;
+      e.preventDefault();
+      const top = story.offsetTop + (story.offsetHeight - window.innerHeight) * (ENTER + 0.02);
+      window.scrollTo({ top, behavior: 'smooth' });
+    });
+  });
 })();
