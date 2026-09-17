@@ -121,3 +121,35 @@
     });
   });
 })();
+
+// Side rail: one dot per section, filled track shows overall progress. Desktop only (CSS).
+(function () {
+  const sections = Array.from(document.querySelectorAll('[data-nav]'));
+  if (!sections.length) return;
+  const rail = document.createElement('ol');
+  rail.className = 'rail'; rail.setAttribute('aria-label', 'Page sections');
+  const track = document.createElement('div'); track.className = 'rail-track';
+  const fill = document.createElement('div'); fill.className = 'rail-fill'; track.appendChild(fill);
+  rail.appendChild(track);
+  const links = sections.map(sec => {
+    const li = document.createElement('li');
+    const a = document.createElement('a'); a.href = '#' + sec.id;
+    a.innerHTML = '<span>' + sec.dataset.nav + '</span><i></i>';
+    li.appendChild(a); rail.appendChild(li); return a;
+  });
+  document.body.appendChild(rail);
+
+  let ticking = false;
+  function update() {
+    ticking = false;
+    const mid = window.scrollY + window.innerHeight * 0.4;
+    let active = 0;
+    sections.forEach((sec, k) => { if (sec.offsetTop <= mid) active = k; });
+    links.forEach((a, k) => a.classList.toggle('is-active', k === active));
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    fill.style.height = (max > 0 ? Math.min(1, window.scrollY / max) * 100 : 0) + '%';
+  }
+  window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+})();

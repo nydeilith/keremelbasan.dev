@@ -178,6 +178,19 @@ p { margin: 0; }
 .browser img { display: block; width: 100%; height: auto; }
 @media (max-width: 760px) { .gallery { grid-template-columns: 1fr; } }
 
+/* ---------- side progress rail (desktop) ---------- */
+.rail { position: fixed; right: 22px; top: 50%; transform: translateY(-50%); z-index: 9;
+  display: none; flex-direction: column; gap: 14px; margin: 0; padding: 0; list-style: none; }
+.rail a { display: flex; align-items: center; justify-content: flex-end; gap: 10px; text-decoration: none; color: var(--ink-3); font-size: 12px; letter-spacing: .04em; text-transform: uppercase; }
+.rail a span { opacity: 0; transform: translateX(6px); transition: opacity .2s, transform .2s; }
+.rail a i { width: 6px; height: 6px; border-radius: 50%; background: var(--line); border: 1px solid var(--ink-3); transition: transform .2s, background .2s; flex: none; }
+.rail a:hover span, .rail a.is-active span { opacity: 1; transform: none; }
+.rail a.is-active { color: var(--accent); }
+.rail a.is-active i { background: var(--accent); border-color: var(--accent); transform: scale(1.5); }
+.rail-track { position: absolute; right: 2px; top: -8px; bottom: -8px; width: 2px; border-radius: 2px; background: var(--line); z-index: -1; }
+.rail-fill { position: absolute; left: 0; top: 0; width: 100%; height: 0; background: var(--accent); transition: height .15s linear; }
+@media (min-width: 1180px) and (min-height: 600px) { .js .rail { display: flex; } }
+
 /* ---------- footer ---------- */
 .foot {
   max-width: var(--max); margin: 0 auto; padding: 32px var(--gutter) 48px;
