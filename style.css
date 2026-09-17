@@ -152,7 +152,8 @@ p { margin: 0; }
 /* ---------- also / internship ---------- */
 .section-title { font-size: clamp(26px, 3.2vw, 36px); margin-bottom: 24px; }
 .also, .internship { max-width: var(--max); margin: 0 auto; padding: clamp(40px, 8vh, 96px) var(--gutter); border-top: 1px solid var(--line); }
-.card { padding: 24px; border: 1px solid var(--line); border-radius: 18px; background: var(--bg-2); max-width: 720px; }
+.card { padding: 24px; border: 1px solid var(--line); border-radius: 18px; background: var(--bg-2); }
+.card > p { max-width: 68ch; }
 .card h3 { font-size: 22px; margin-bottom: 10px; }
 .card p { color: var(--ink-2); }
 .card .meta { margin-top: 14px; font-size: 13px; color: var(--ink-3); }
