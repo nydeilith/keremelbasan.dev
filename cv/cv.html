@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Kerem Yiğit Elbasan — CV</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 0; }
+  :root { --ink: #2b2b2b; --muted: #5f5f5f; --faint: #8a8a8a; --accent: #8a6a1f; --line: #cfcfcf; --bg: #f5f5f5; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--ink); }
+  body { font-family: "Lora", Georgia, serif; font-size: 9.5pt; line-height: 1.32; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .page { width: 210mm; min-height: 297mm; padding: 12mm 15mm 10mm; }
+  a { color: var(--accent); text-decoration: none; }
+
+  header { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+  h1 { font-family: "Cormorant Garamond", serif; font-weight: 300; font-size: 27pt; margin: 0 0 4px; letter-spacing: .01em; line-height: 1; white-space: nowrap; }
+  .role { font-family: "Lora", serif; font-size: 7.8pt; letter-spacing: .22em; text-transform: uppercase; color: var(--accent); max-width: 34ch; }
+  .contact { text-align: right; font-size: 8.4pt; color: var(--muted); line-height: 1.55; white-space: nowrap; }
+
+  .summary { padding: 7px 0 8px; border-bottom: 1px solid var(--line); text-align: justify; }
+
+  section { display: grid; grid-template-columns: 34mm 1fr; gap: 0 8px; padding: 7px 0; border-bottom: 1px solid var(--line); }
+  section:last-of-type { border-bottom: 0; }
+  .label { font-family: "Lora", serif; font-size: 7.6pt; letter-spacing: .22em; text-transform: uppercase; color: var(--accent); padding-top: 3px; padding-right: 8px; }
+  .entry + .entry { margin-top: 8px; }
+  .entry-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+  .entry-title { font-family: "Cormorant Garamond", serif; font-weight: 500; font-size: 12.2pt; line-height: 1.15; }
+  .entry-title .sep { color: var(--faint); }
+  .entry-title .sub { font-style: italic; font-weight: 400; color: var(--muted); font-size: 11pt; }
+  .entry-meta { font-size: 8.4pt; color: var(--muted); white-space: nowrap; }
+  .stack { font-size: 8.4pt; color: var(--muted); margin: 1px 0 2px; }
+  .stack span + span::before { content: " · "; }
+  ul { list-style: none; margin: 0; padding: 0; }
+  li { padding-left: 13px; text-indent: -13px; margin: 0; }
+  li::before { content: "— "; }
+  .line { margin-top: 3px; }
+  .small { font-size: 8.6pt; color: var(--muted); }
+  b { font-weight: 600; }
+
+  .skills { display: grid; grid-template-columns: 22mm 1fr; gap: 0 6px; }
+  .skills i { font-style: italic; color: var(--muted); }
+
+  .yt-head { display: flex; justify-content: space-between; align-items: baseline; }
+</style>
+</head>
+<body>
+<div class="page">
+
+<header>
+  <div>
+    <h1>Kerem Yiğit Elbasan</h1>
+    <div class="role">Cross-Platform Mobile &amp; Full-Stack Developer</div>
+  </div>
+  <div class="contact">
+    kerem@keremelbasan.dev · +90 543 711 77 10<br>
+    Niğde, Turkey<br>
+    <a href="https://keremelbasan.dev">keremelbasan.dev</a> · <a href="https://github.com/nydeilith">github.com/nydeilith</a> · <a href="https://www.linkedin.com/in/key51">linkedin.com/in/key51</a>
+  </div>
+</header>
+
+<p class="summary">Third-year Computer Engineering student who ships and maintains production software: a cross-platform prayer and lifestyle app released on Google Play in 11 languages, and a full-stack gamified productivity platform on Firebase. Looking for a software engineering internship in mobile or full-stack development.</p>
+
+<section>
+  <div class="label">Education</div>
+  <div>
+    <div class="entry-head">
+      <div class="entry-title">B.Sc. Computer Engineering — Niğde Ömer Halisdemir University</div>
+      <div class="entry-meta">Expected Sept 2028</div>
+    </div>
+    <div class="line">GPA <b>3.31 / 4.00</b> · Entering third year</div>
+    <div class="small">Coursework: Data Structures, Object-Oriented Programming, Algorithms, Discrete Mathematics, Linear Algebra, Probability &amp; Statistics.</div>
+  </div>
+</section>
+
+<section>
+  <div class="label">Selected Projects</div>
+  <div>
+    <div class="entry">
+      <div class="entry-head">
+        <div class="entry-title">Taqwa — Cross-Platform Prayer &amp; Lifestyle App <span class="sep">·</span> <span class="sub">Independent Developer</span></div>
+        <div class="entry-meta">2026 – Present · <a href="https://play.google.com/store/apps/details?id=com.taqwastudio.takva">Google Play</a></div>
+      </div>
+      <div class="stack"><span>React</span><span>TypeScript</span><span>Capacitor</span><span>Firebase</span><span>Android (Java)</span><span>PWA</span></div>
+      <ul>
+        <li>Sole developer of a <b>59K-line</b> cross-platform product released on Google Play, spanning Android, PWA, <b>11 languages</b>, RTL layouts, offline language packs and Firebase-backed sync.</li>
+        <li>Engineered a fault-tolerant notification system that calculates prayer times 14 days ahead, deduplicates schedules, verifies the OS queue, respects iOS notification quotas and handles revoked Android exact-alarm access.</li>
+        <li>Extended Capacitor with Java-based native Android bridges for home-screen widgets and live prayer-window notifications — functionality not available through the web layer alone.</li>
+        <li>Built a release-quality engineering pipeline: <b>603 automated checks</b>, Firebase emulator security-rule tests, Playwright E2E/visual tests, Android builds and a 270 KB gzipped startup-performance gate.</li>
+      </ul>
+    </div>
+    <div class="entry">
+      <div class="entry-head">
+        <div class="entry-title">Meritee — Gamified Productivity Platform <span class="sep">·</span> <span class="sub">Independent Developer</span></div>
+        <div class="entry-meta">2025 – Present · <a href="https://merite-app.web.app">merite-app.web.app</a></div>
+      </div>
+      <div class="stack"><span>React</span><span>TypeScript</span><span>Firebase Cloud Functions v2</span><span>Firestore</span><span>FCM</span><span>i18next</span></div>
+      <ul>
+        <li>Launched an offline-first productivity web app: instant local hydration with debounced Firestore sync, so users keep working without a connection and never lose state when switching accounts.</li>
+        <li>Shipped serverless features on Cloud Functions v2 — scheduled personalised push notifications with dead-token cleanup, and real-time friend requests via Firestore triggers.</li>
+        <li>Designed the reward economy and social layer (XP limits, streak items, leaderboards, collision-safe friend codes) behind field-level Firestore security rules, plus client-side PDF progress reports.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="label">Skills</div>
+  <div class="skills">
+    <i>Programming</i><div>TypeScript, JavaScript, Java, Python, C++, SQL</div>
+    <i>Frontend</i><div>React 18, Zustand, Tailwind CSS, Vite, Framer Motion, i18n &amp; RTL, PWA</div>
+    <i>Mobile</i><div>Capacitor, native plugin bridging, local notifications, Play Console</div>
+    <i>Backend</i><div>Firebase Auth, Firestore &amp; security rules, Cloud Functions v2, FCM</div>
+    <i>Practices</i><div>Vitest, golden &amp; regression tests, bundle-budget CI gates, Git / GitHub</div>
+  </div>
+</section>
+
+<section>
+  <div class="label">Product &amp; Community</div>
+  <div>
+    <div class="yt-head">
+      <div class="entry-title">YouTube — <a href="https://www.youtube.com/@TaqwaPrayer">@TaqwaPrayer</a></div>
+      <div class="entry-meta">1,148 subscribers</div>
+    </div>
+    <div class="line">Create product content for the app's own channel, supporting organic discovery and user feedback.</div>
+  </div>
+</section>
+
+<section>
+  <div class="label">Languages</div>
+  <div>Turkish (native) · English (C1, advanced) · French (A2, working toward B1)</div>
+</section>
+
+</div>
+</body>
+</html>
