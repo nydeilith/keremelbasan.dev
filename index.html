@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -41,7 +41,7 @@
     Looking for an <a href="#internship">Erasmus+ funded internship</a> in summer 2027.
   </p>
   <div class="cta">
-    <a class="btn btn-primary" href="mailto:kerem@keremelbasan.dev">Email me</a>
+    <button class="btn btn-primary js-copy" type="button" data-copy="kerem@keremelbasan.dev">Copy my email</button>
     <a class="btn" href="assets/Kerem-Elbasan-CV.pdf">CV (PDF)</a>
     <a class="btn" href="https://play.google.com/store/apps/details?id=com.taqwastudio.takva">Google Play ↗</a>
   </div>
@@ -56,12 +56,19 @@
       <div class="phone-wrap">
         <div class="phone" id="phone">
           <div class="phone-screen">
-            <img class="screen is-active" src="assets/home.webp" alt="Taqwa home screen: countdown to Maghrib, today's prayers, 12-day streak" width="618" height="1338" data-step="0">
-            <img class="screen" src="assets/notifications.webp" alt="Notification settings: per-prayer alert sounds and offsets" width="618" height="1338" loading="lazy" data-step="1">
-            <img class="screen" src="assets/qada.webp" alt="Qada debt tracker: missed prayers per prayer time, mark done" width="618" height="1338" loading="lazy" data-step="2">
-            <img class="screen" src="assets/quran.webp" alt="Quran reader with a khatm plan at 23%" width="618" height="1338" loading="lazy" data-step="3">
+            <div class="screen-strip" id="strip">
+              <img class="screen" src="assets/home.webp" alt="Taqwa home screen: countdown to Maghrib, today's prayers, 12-day streak" width="618" height="1338">
+              <img class="screen" src="assets/notifications.webp" alt="Notification settings: per-prayer alert sounds and offsets" width="618" height="1338">
+              <img class="screen" src="assets/qada.webp" alt="Qada debt tracker: missed prayers per prayer time, mark done" width="618" height="1338">
+              <img class="screen" src="assets/quran.webp" alt="Quran reader with a khatm plan at 23%" width="618" height="1338">
+            </div>
+            <div class="phone-glare" aria-hidden="true"></div>
           </div>
           <div class="phone-island" aria-hidden="true"></div>
+          <span class="phone-btn phone-btn-mute" aria-hidden="true"></span>
+          <span class="phone-btn phone-btn-vol1" aria-hidden="true"></span>
+          <span class="phone-btn phone-btn-vol2" aria-hidden="true"></span>
+          <span class="phone-btn phone-btn-power" aria-hidden="true"></span>
         </div>
       </div>
 
@@ -105,6 +112,12 @@
     <h3><a href="https://merite-app.web.app">Meritee</a> — gamified productivity platform</h3>
     <p>Offline-first web app on Firebase: instant local hydration with debounced Firestore sync, scheduled personalised push on Cloud Functions v2, real-time friend requests, and a reward economy behind field-level security rules.</p>
     <p class="meta">React · TypeScript · Cloud Functions v2 · Firestore · FCM · 2025–present</p>
+    <!-- TODO: Meritee screenshots from Kerem → assets/meritee-1.webp … then un-comment
+    <div class="gallery">
+      <figure class="browser"><div class="browser-bar"><i></i><i></i><i></i></div><img src="assets/meritee-1.webp" alt="" loading="lazy"></figure>
+      <figure class="browser"><div class="browser-bar"><i></i><i></i><i></i></div><img src="assets/meritee-2.webp" alt="" loading="lazy"></figure>
+    </div>
+    -->
   </article>
 </section>
 
@@ -117,11 +130,11 @@
   <ul class="facts">
     <li><strong>Funded.</strong> The Erasmus+ traineeship grant covers my stay. You sign a standard traineeship agreement with my university; no salary is required.</li>
     <li><strong>Ready to work.</strong> I maintain a live product on my own, from bug reports to Play Console. Give me a real ticket on day one.</li>
-    <li><strong>English C1.</strong> Turkish native. Happy to work in an English-speaking team.</li>
+    <li><strong>English C1.</strong> Turkish native. French A2–B1 and improving — enough for the office, not yet for the code review.</li>
     <li><strong>Timing.</strong> June–August 2027, flexible by a few weeks. Remote onboarding before arrival is fine.</li>
   </ul>
   <div class="cta">
-    <a class="btn btn-primary" href="mailto:kerem@keremelbasan.dev?subject=Internship%202027">kerem@keremelbasan.dev</a>
+    <button class="btn btn-primary js-copy" type="button" data-copy="kerem@keremelbasan.dev">kerem@keremelbasan.dev</button>
     <a class="btn" href="assets/Kerem-Elbasan-CV.pdf">CV (PDF)</a>
   </div>
 </section>
