@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kerem Elbasan</title>
+<meta name="description" content="Kerem Yiğit Elbasan — computer engineering student who ships production software. Sole developer of Taqwa (Google Play, 11 languages). Looking for an Erasmus+ funded software internship, summer 2027.">
+<meta property="og:title" content="Kerem Elbasan — I build software people actually use">
+<meta property="og:description" content="Sole developer of Taqwa, a prayer & qada tracker live on Google Play in 11 languages. Looking for an Erasmus+ funded internship, summer 2027.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://keremelbasan.dev/">
+<meta name="theme-color" content="#f6f3ee" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#131417" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f5e4f'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='34' text-anchor='middle' fill='%23f6f3ee'%3EK%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script>document.documentElement.classList.replace('no-js','js')</script>
+</head>
+<body>
+
+<header class="nav">
+  <a class="nav-name" href="#top">Kerem Elbasan</a>
+  <nav class="nav-links">
+    <a href="#work">Work</a>
+    <a href="#internship">Internship</a>
+    <a href="assets/Kerem-Elbasan-CV.pdf">CV</a>
+    <a href="mailto:kerem@keremelbasan.dev">Email</a>
+  </nav>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <p class="eyebrow">Kerem Yiğit Elbasan · Niğde, Türkiye</p>
+  <h1>I build software<br>people <em>actually use</em>.</h1>
+  <p class="lede">
+    Third-year computer engineering student. Sole developer of <a href="https://play.google.com/store/apps/details?id=com.taqwastudio.takva">Taqwa</a>,
+    a prayer &amp; qada tracker live on Google Play in 11 languages — built, shipped and maintained by one person.
+    Looking for an <a href="#internship">Erasmus+ funded internship</a> in summer 2027.
+  </p>
+  <div class="cta">
+    <a class="btn btn-primary" href="mailto:kerem@keremelbasan.dev">Email me</a>
+    <a class="btn" href="assets/Kerem-Elbasan-CV.pdf">CV (PDF)</a>
+    <a class="btn" href="https://play.google.com/store/apps/details?id=com.taqwastudio.takva">Google Play ↗</a>
+  </div>
+  <p class="scroll-hint" aria-hidden="true">Scroll to look inside ↓</p>
+</section>
+
+<!-- Scroll story: the phone scales in, then each scroll step swaps the screen and reveals what's underneath. -->
+<section class="story" id="work" aria-label="Taqwa, and what's underneath it">
+  <div class="story-sticky">
+    <div class="story-grid">
+
+      <div class="phone-wrap">
+        <div class="phone" id="phone">
+          <div class="phone-screen">
+            <img class="screen is-active" src="assets/home.webp" alt="Taqwa home screen: countdown to Maghrib, today's prayers, 12-day streak" width="618" height="1338" data-step="0">
+            <img class="screen" src="assets/notifications.webp" alt="Notification settings: per-prayer alert sounds and offsets" width="618" height="1338" loading="lazy" data-step="1">
+            <img class="screen" src="assets/qada.webp" alt="Qada debt tracker: missed prayers per prayer time, mark done" width="618" height="1338" loading="lazy" data-step="2">
+            <img class="screen" src="assets/quran.webp" alt="Quran reader with a khatm plan at 23%" width="618" height="1338" loading="lazy" data-step="3">
+          </div>
+          <div class="phone-island" aria-hidden="true"></div>
+        </div>
+      </div>
+
+      <ol class="captions" id="captions">
+        <li class="caption is-active" data-step="0">
+          <span class="caption-kicker">The surface</span>
+          <h2>Taqwa — prayer &amp; qada tracker</h2>
+          <p>Prayer times, missed-prayer planning, Quran with a khatm plan, qibla, duas. Free, no ads, 11 languages with RTL. Released 2026 on Google Play; React, TypeScript, Capacitor, native Android bridges.</p>
+        </li>
+        <li class="caption" data-step="1">
+          <span class="caption-kicker">Underneath · notifications</span>
+          <h2>Alerts that survive the OS</h2>
+          <p>Prayer times are computed 14 days ahead, schedules are deduplicated and the OS queue is verified on every launch. Handles revoked exact-alarm permission on Android and notification quotas on iOS. Home-screen widget via a Java bridge Capacitor doesn't provide.</p>
+        </li>
+        <li class="caption" data-step="2">
+          <span class="caption-kicker">Underneath · data</span>
+          <h2>Offline first, account optional</h2>
+          <p>Everything works with no account and no connection: times, tracking, Quran text, language packs. Sign in and Firebase backs it up; don't, and it never leaves the device.</p>
+        </li>
+        <li class="caption" data-step="3">
+          <span class="caption-kicker">Underneath · release</span>
+          <h2>A pipeline before a feature</h2>
+          <p>603 automated checks, Playwright E2E and visual tests, Firebase emulator security-rule tests, and a 270 KB gzipped startup budget the build fails on. One-tap in-app bug reporting so users tell me before the store does.</p>
+        </li>
+      </ol>
+
+    </div>
+  </div>
+</section>
+
+<section class="numbers" aria-label="Facts">
+  <div class="num"><strong>59K</strong><span>lines of TypeScript, Java and CSS</span></div>
+  <div class="num"><strong>11</strong><span>languages, RTL included</span></div>
+  <div class="num"><strong>603</strong><span>automated checks per build</span></div>
+  <div class="num"><strong>270 KB</strong><span>gzipped startup budget</span></div>
+</section>
+
+<section class="also">
+  <h2 class="section-title">Also shipped</h2>
+  <article class="card">
+    <h3><a href="https://merite-app.web.app">Meritee</a> — gamified productivity platform</h3>
+    <p>Offline-first web app on Firebase: instant local hydration with debounced Firestore sync, scheduled personalised push on Cloud Functions v2, real-time friend requests, and a reward economy behind field-level security rules.</p>
+    <p class="meta">React · TypeScript · Cloud Functions v2 · Firestore · FCM · 2025–present</p>
+  </article>
+</section>
+
+<section class="internship" id="internship">
+  <h2 class="section-title">What I'm looking for</h2>
+  <p class="big">
+    A <strong>3-month software engineering internship in summer 2027</strong> — mobile, web or full-stack — at a company in
+    France, Belgium, Luxembourg, Germany or the Netherlands.
+  </p>
+  <ul class="facts">
+    <li><strong>Funded.</strong> The Erasmus+ traineeship grant covers my stay. You sign a standard traineeship agreement with my university; no salary is required.</li>
+    <li><strong>Ready to work.</strong> I maintain a live product on my own, from bug reports to Play Console. Give me a real ticket on day one.</li>
+    <li><strong>English C1.</strong> Turkish native. Happy to work in an English-speaking team.</li>
+    <li><strong>Timing.</strong> June–August 2027, flexible by a few weeks. Remote onboarding before arrival is fine.</li>
+  </ul>
+  <div class="cta">
+    <a class="btn btn-primary" href="mailto:kerem@keremelbasan.dev?subject=Internship%202027">kerem@keremelbasan.dev</a>
+    <a class="btn" href="assets/Kerem-Elbasan-CV.pdf">CV (PDF)</a>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <span>© 2026 Kerem Yiğit Elbasan</span>
+  <nav>
+    <a href="https://github.com/nydeilith">GitHub</a>
+    <a href="https://www.linkedin.com/in/key51">LinkedIn</a>
+    <a href="https://www.youtube.com/@TaqwaPrayer">YouTube</a>
+    <a href="mailto:kerem@keremelbasan.dev">Email</a>
+  </nav>
+</footer>
+
+<script src="main.js" defer></script>
+</body>
+</html>
