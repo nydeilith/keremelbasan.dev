@@ -27,7 +27,7 @@
   * { box-sizing: border-box; }
   html, body { margin: 0; background: var(--bg); color: var(--ink); }
   body { font-family: "Lora", Georgia, serif; font-size: 9.5pt; line-height: 1.32; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  .page { width: 210mm; min-height: 297mm; padding: 12mm 15mm 10mm; }
+  .page { width: 210mm; min-height: 297mm; padding: 10mm 15mm 8mm; }
   a { color: var(--accent); text-decoration: none; }
 
   header { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
@@ -37,7 +37,7 @@
 
   .summary { padding: 7px 0 8px; border-bottom: 1px solid var(--line); text-align: justify; }
 
-  section { display: grid; grid-template-columns: 34mm 1fr; gap: 0 8px; padding: 7px 0; border-bottom: 1px solid var(--line); }
+  section { display: grid; grid-template-columns: 34mm 1fr; gap: 0 8px; padding: 6px 0; border-bottom: 1px solid var(--line); }
   section:last-of-type { border-bottom: 0; }
   .label { font-family: "Lora", serif; font-size: 7.6pt; letter-spacing: .22em; text-transform: uppercase; color: var(--accent); padding-top: 3px; padding-right: 8px; }
   .entry + .entry { margin-top: 8px; }
@@ -114,8 +114,19 @@
       <div class="stack"><span>React</span><span>TypeScript</span><span>Firebase Cloud Functions v2</span><span>Firestore</span><span>FCM</span><span>i18next</span></div>
       <ul>
         <li>Launched an offline-first productivity web app: instant local hydration with debounced Firestore sync, so users keep working without a connection and never lose state when switching accounts.</li>
-        <li>Shipped serverless features on Cloud Functions v2 — scheduled personalised push notifications with dead-token cleanup, and real-time friend requests via Firestore triggers.</li>
-        <li>Designed the reward economy and social layer (XP limits, streak items, leaderboards, collision-safe friend codes) behind field-level Firestore security rules, plus client-side PDF progress reports.</li>
+        <li>Shipped serverless features on Cloud Functions v2 — scheduled personalised push notifications with dead-token cleanup, and real-time friend requests via triggers.</li>
+      </ul>
+    </div>
+    <div class="entry">
+      <div class="entry-head">
+        <div class="entry-title">Data, ML &amp; Automation Tooling <span class="sep">·</span> <span class="sub">Python</span></div>
+        <div class="entry-meta">2026</div>
+      </div>
+      <div class="stack"><span>Python</span><span>PyTorch</span><span>Hugging Face Transformers</span><span>scikit-learn</span><span>SQLite</span><span>Whisper</span><span>OpenGL</span></div>
+      <ul>
+        <li>Competitor-review analyzer: scraped Play/App Store reviews of 20 rival apps, scored sentiment with RoBERTa and clustered complaints (sentence embeddings + K-Means); reading text, not stars, surfaced complaints hidden in 5-star reviews.</li>
+        <li>Outreach pipeline (~700 companies): site crawling, mail-server checks, rubric scoring, personalised drafts in a human-approval queue and scheduled sending.</li>
+        <li>Short-form video automation: Whisper word timing on Arabic audio, offscreen GPU shaders (moderngl), loudness-normalised ffmpeg exports.</li>
       </ul>
     </div>
   </div>
@@ -139,7 +150,7 @@
       <div class="entry-title">YouTube — <a href="https://www.youtube.com/@TaqwaPrayer">@TaqwaPrayer</a></div>
       <div class="entry-meta">1,148 subscribers</div>
     </div>
-    <div class="line">Create product content for the app's own channel, supporting organic discovery and user feedback.</div>
+    <div class="line">Product content for the app's own channel, driving organic discovery and user feedback.</div>
   </div>
 </section>
 
