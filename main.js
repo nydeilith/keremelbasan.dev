@@ -131,10 +131,10 @@
   const track = document.createElement('div'); track.className = 'rail-track';
   const fill = document.createElement('div'); fill.className = 'rail-fill'; track.appendChild(fill);
   rail.appendChild(track);
-  const links = sections.map(sec => {
+  const links = sections.map((sec, k) => {
     const li = document.createElement('li');
     const a = document.createElement('a'); a.href = '#' + sec.id;
-    a.innerHTML = '<span>' + sec.dataset.nav + '</span><i></i>';
+    a.innerHTML = '<span>' + String(k + 1).padStart(2, '0') + ' · ' + sec.dataset.nav + '</span><i></i>';
     li.appendChild(a); rail.appendChild(li); return a;
   });
   document.body.appendChild(rail);
@@ -152,4 +152,146 @@
   window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
   window.addEventListener('resize', update);
   update();
+})();
+
+// ---------- v2 kinetic layer ----------
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// Hero headline: letters start scattered and assemble on load (≈1.2s), then drift apart
+// line by line as the hero scrolls away. Screen readers get the h1's aria-label.
+(function () {
+  const h1 = document.querySelector('.kinetic');
+  if (!h1) return;
+  const root = document.documentElement;
+  const lines = Array.from(h1.querySelectorAll('.line'));
+
+  if (!reduceMotion && h1.animate) {
+    const chars = [];
+    const walk = node => {
+      Array.from(node.childNodes).forEach(n => {
+        if (n.nodeType === 3) {
+          const frag = document.createDocumentFragment();
+          n.textContent.split(/(\s+)/).forEach(tok => {
+            if (!tok) return;
+            if (/^\s+$/.test(tok)) { frag.appendChild(document.createTextNode(' ')); return; }
+            const w = document.createElement('span'); w.className = 'w'; w.setAttribute('aria-hidden', 'true');
+            for (const c of tok) {
+              const s = document.createElement('span'); s.className = 'ch'; s.textContent = c;
+              w.appendChild(s); chars.push(s);
+            }
+            frag.appendChild(w);
+          });
+          n.replaceWith(frag);
+        } else if (n.nodeType === 1) walk(n);
+      });
+    };
+    lines.forEach(walk);
+
+    const vw = window.innerWidth, vh = window.innerHeight;
+    const r = (a, b) => a + Math.random() * (b - a);
+    const anims = [];
+    chars.forEach((c, i) => {
+      const from = `translate(${r(-0.45, 0.45) * vw}px, ${r(-0.35, 0.5) * vh}px) rotate(${r(-160, 160)}deg) scale(${r(0.5, 1.6)})`;
+      anims.push(c.animate(
+        [{ transform: from, opacity: 0 }, { opacity: 1, offset: 0.35 }, { transform: 'none', opacity: 1 }],
+        { duration: r(700, 1050), delay: 60 + i * 14, easing: 'cubic-bezier(.16,.84,.24,1)', fill: 'backwards' }
+      ));
+    });
+    // Never leave the headline unreadable: if the timeline stalls (throttled tab), snap to the end.
+    setTimeout(() => anims.forEach(a => { try { a.finish(); } catch (e) {} }), 2400);
+  }
+  root.classList.add('kin-ready');
+
+  if (reduceMotion) return;
+  const hero = document.querySelector('.hero');
+  let ticking = false;
+  function drift() {
+    ticking = false;
+    const p = Math.min(1, Math.max(0, window.scrollY / (hero.offsetHeight * 0.9)));
+    lines.forEach((l, k) => {
+      const dir = k % 2 ? 1 : -1;
+      l.style.transform = p ? `translateX(${dir * p * (8 + k * 4)}vw)` : '';
+    });
+  }
+  window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(drift); } }, { passive: true });
+})();
+
+// Nav timecode: the page is a 2-minute reel; scroll position maps onto it.
+(function () {
+  const tc = document.getElementById('tc');
+  if (!tc) return;
+  const LEN = 120;
+  let ticking = false;
+  function upd() {
+    ticking = false;
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    const s = Math.round((max > 0 ? window.scrollY / max : 0) * LEN);
+    tc.textContent = String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0');
+  }
+  window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(upd); } }, { passive: true });
+  upd();
+})();
+
+// Facts: count up once when the row enters view. Final text is already in the HTML.
+(function () {
+  const els = Array.from(document.querySelectorAll('[data-count]'));
+  if (!els.length || reduceMotion || !('IntersectionObserver' in window)) return;
+  const fmt = (el, v) => {
+    const dec = +(el.dataset.dec || 0);
+    let s = v.toFixed(dec);
+    if (el.dataset.sep) s = Math.round(v).toLocaleString('en-US');
+    return s + (el.dataset.suffix || '');
+  };
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      io.unobserve(e.target);
+      const el = e.target, to = +el.dataset.count, t0 = performance.now(), D = 1100;
+      const step = now => {
+        const k = Math.min(1, (now - t0) / D), ease = 1 - Math.pow(1 - k, 4);
+        el.textContent = fmt(el, to * ease);
+        if (k < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+      // rAF can stall in throttled tabs; never leave a half-counted number on screen.
+      const final = el.dataset.final;
+      setTimeout(() => { el.textContent = final; }, D + 600);
+    });
+  }, { threshold: 0.6 });
+  els.forEach(el => { el.dataset.final = el.textContent; });
+  els.forEach(el => io.observe(el));
+})();
+
+// Internship statement: words light up as the paragraph scrolls through the viewport.
+(function () {
+  const el = document.querySelector('.js-scrub');
+  if (!el || reduceMotion) return;
+  const words = [];
+  const walk = node => {
+    Array.from(node.childNodes).forEach(n => {
+      if (n.nodeType === 3) {
+        const frag = document.createDocumentFragment();
+        n.textContent.split(/(\s+)/).forEach(tok => {
+          if (!tok) return;
+          if (/^\s+$/.test(tok)) { frag.appendChild(document.createTextNode(' ')); return; }
+          const s = document.createElement('span'); s.className = 'sw'; s.textContent = tok;
+          frag.appendChild(s); words.push(s);
+        });
+        n.replaceWith(frag);
+      } else if (n.nodeType === 1) walk(n);
+    });
+  };
+  walk(el);
+  let ticking = false;
+  function upd() {
+    ticking = false;
+    const r = el.getBoundingClientRect(), vh = window.innerHeight;
+    // 0 when the top hits 85% of the viewport, 1 when the bottom reaches 45%
+    const p = Math.min(1, Math.max(0, (vh * 0.85 - r.top) / (vh * 0.4 + r.height)));
+    const lit = p * words.length;
+    words.forEach((w, i) => w.style.setProperty('--o', Math.min(1, Math.max(0.15, lit - i + 0.15))));
+  }
+  window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(upd); } }, { passive: true });
+  window.addEventListener('resize', upd);
+  upd();
 })();

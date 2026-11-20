@@ -4,24 +4,29 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Kerem Elbasan</title>
-<meta name="description" content="Kerem Yiğit Elbasan — computer engineering student who ships production software. Sole developer of Taqwa (Google Play, 11 languages). Looking for an Erasmus+ funded software internship, summer 2027.">
+<meta name="description" content="Kerem Yiğit Elbasan — computer engineering student who ships production software. Solo developer of Taqwa (Google Play, 11 languages) and Lexorbit (App Store). Looking for an Erasmus+ funded software internship, summer 2027.">
 <meta property="og:title" content="Kerem Elbasan — I build software people actually use">
-<meta property="og:description" content="Sole developer of Taqwa, a prayer & qada tracker live on Google Play in 11 languages. Looking for an Erasmus+ funded internship, summer 2027.">
+<meta property="og:description" content="Solo developer of Taqwa (Google Play, 11 languages) and Lexorbit (App Store). Looking for an Erasmus+ funded internship, summer 2027.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://keremelbasan.dev/">
-<meta name="theme-color" content="#f6f3ee" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#131417" media="(prefers-color-scheme: dark)">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f5e4f'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='34' text-anchor='middle' fill='%23f6f3ee'%3EK%3C/text%3E%3C/svg%3E">
+<meta name="theme-color" content="#f6f3ee">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f5e4f'/%3E%3Ctext x='32' y='45' font-family='Arial Narrow,Arial,sans-serif' font-weight='900' font-size='38' text-anchor='middle' fill='%23f6f3ee'%3EK%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<script>
+  // Hide the hero headline only when we're going to animate it in; CSS has a timed fallback.
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('kin');
+</script>
 </head>
 <body>
 
 <header class="nav">
-  <a class="nav-name" href="#top">Kerem Elbasan</a>
-  <nav class="nav-links">
+  <a class="nav-name" href="#top">KEREM<span>/</span></a>
+  <span class="nav-sub mono">Software · Summer 2027</span>
+  <span class="nav-tc mono" aria-hidden="true">REEL <b id="tc">00:00</b> / 02:00</span>
+  <nav class="nav-links mono">
     <a href="#work">Work</a>
     <a href="#internship">Internship</a>
     <a href="assets/Kerem-Elbasan-CV.pdf">CV</a>
@@ -32,28 +37,57 @@
 <main id="top">
 
 <section class="hero" id="intro" data-nav="Intro">
-  <p class="eyebrow">Kerem Yiğit Elbasan · Niğde, Türkiye</p>
-  <h1>I build software<br>people <em>actually use</em>.</h1>
-  <p class="lede">
-    Third-year computer engineering student. Sole developer of <a href="https://play.google.com/store/apps/details?id=com.taqwastudio.takva">Taqwa</a>,
-    a prayer &amp; qada tracker live on Google Play in 11 languages with 1,000+ downloads — built, shipped and maintained by one person.
-    Looking for an <a href="#internship">Erasmus+ funded internship</a> in summer 2027.
-  </p>
-  <div class="cta">
-    <button class="btn btn-primary js-copy" type="button" data-copy="kerem@keremelbasan.dev">Copy my email</button>
-    <a class="btn" href="assets/Kerem-Elbasan-CV.pdf">CV (PDF)</a>
-    <a class="btn" href="https://play.google.com/store/apps/details?id=com.taqwastudio.takva">Google Play ↗</a>
+  <span class="ghost" aria-hidden="true">01</span>
+  <div class="slate mono">
+    <span><b>SC. 01 / 05</b> — Intro</span>
+    <span class="live"><i></i>Open to internships · Jun–Aug 2027</span>
   </div>
-  <p class="proof">
-    B.Sc. Computer Engineering, Niğde Ömer Halisdemir University · expected 2028 ·
-    <a href="https://github.com/nydeilith">GitHub</a> · <a href="https://www.linkedin.com/in/key51">LinkedIn</a> · <a href="https://www.youtube.com/@TaqwaPrayer">YouTube</a>
-  </p>
-  <p class="scroll-hint" aria-hidden="true">Scroll to look inside ↓</p>
+
+  <h1 class="kinetic" aria-label="I build software people actually use.">
+    <span class="line">I build</span>
+    <span class="line">software</span>
+    <span class="line">people <em>actually</em></span>
+    <span class="line"><em>use</em><span class="stop">.</span></span>
+  </h1>
+
+  <div class="hero-grid">
+    <div>
+      <p class="lede">
+        Third-year computer engineering student with <strong>two apps in the stores, each built, shipped and maintained by one person:</strong>
+        <a href="https://play.google.com/store/apps/details?id=com.taqwastudio.takva">Taqwa</a>, a prayer &amp; qada tracker on Google Play in 11 languages with 1,000+ downloads,
+        and <a href="https://apps.apple.com/app/id6829423129">Lexorbit</a>, a language-learning app on the App Store.
+        Looking for an <a href="#internship">Erasmus+ funded internship</a> in summer 2027.
+      </p>
+      <div class="cta">
+        <button class="btn btn-primary js-copy" type="button" data-copy="kerem@keremelbasan.dev">Copy my email</button>
+        <a class="btn" href="assets/Kerem-Elbasan-CV.pdf">CV (PDF)</a>
+        <a class="btn" href="https://play.google.com/store/apps/details?id=com.taqwastudio.takva">Google Play ↗</a>
+      </div>
+    </div>
+    <dl class="spec mono">
+      <div><dt>Role</dt><dd>Solo developer, Taqwa &amp; Lexorbit</dd></div>
+      <div><dt>Shipped</dt><dd>Taqwa (Google Play) · Lexorbit (App Store)</dd></div>
+      <div><dt>Audience</dt><dd>36K+ across <a href="https://www.instagram.com/taqwa_prayer/">Instagram</a> &amp; <a href="https://www.youtube.com/@TaqwaPrayer">YouTube</a></dd></div>
+      <div><dt>Stack</dt><dd>React · React Native (Expo) · TS · Firebase · Supabase</dd></div>
+      <div><dt>Study</dt><dd>B.Sc. Comp. Eng., Niğde Ömer Halisdemir Univ.</dd></div>
+      <div><dt>Links</dt><dd><a href="https://github.com/nydeilith">GitHub</a> · <a href="https://www.linkedin.com/in/key51">LinkedIn</a> · <a href="https://www.youtube.com/@TaqwaPrayer">YouTube</a></dd></div>
+    </dl>
+  </div>
 </section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>React</span><i>✦</i><span>TypeScript</span><i>✦</i><span>Capacitor</span><i>✦</i><span>Android · Java</span><i>✦</i><span>Firebase</span><i>✦</i><span>Cloud Functions</span><i>✦</i><span>Playwright</span><i>✦</i><span>Python</span><i>✦</i><span>11 Languages · RTL</span><i>✦</i>
+  </div>
+</div>
 
 <!-- Scroll story: the phone scales in, then each scroll step swaps the screen and reveals what's underneath. -->
 <section class="story" id="work" data-nav="Taqwa" aria-label="Taqwa, and what's underneath it">
   <div class="story-sticky">
+    <div class="slate slate-abs mono">
+      <span><b>SC. 02 / 05</b> — Taqwa</span>
+      <span>Your scroll is the playhead ↓</span>
+    </div>
     <div class="story-grid">
 
       <div class="phone-wrap">
@@ -76,22 +110,22 @@
 
       <ol class="captions" id="captions">
         <li class="caption is-active" data-step="0">
-          <span class="caption-kicker">The surface</span>
+          <span class="caption-kicker mono">Take 1 · The surface</span>
           <h2>Taqwa — prayer &amp; qada tracker</h2>
           <p>Prayer times, missed-prayer planning, Quran with a khatm plan, qibla, duas. Free, no ads, 11 languages with RTL. Released 2026 on Google Play, 1,000+ downloads; React, TypeScript, Capacitor, native Android bridges.</p>
         </li>
         <li class="caption" data-step="1">
-          <span class="caption-kicker">Underneath · notifications</span>
+          <span class="caption-kicker mono">Take 2 · Notifications</span>
           <h2>Alerts that survive the OS</h2>
           <p>Prayer times are computed 14 days ahead, schedules are deduplicated and the OS queue is verified on every launch. Handles revoked exact-alarm permission and doze on Android. Home-screen widget and live prayer-window notifications via Java bridges Capacitor doesn't provide.</p>
         </li>
         <li class="caption" data-step="2">
-          <span class="caption-kicker">Underneath · data</span>
+          <span class="caption-kicker mono">Take 3 · Data</span>
           <h2>Offline first, account optional</h2>
           <p>Everything works with no account and no connection: times, tracking, Quran text, language packs. Sign in and Firebase backs it up; don't, and it never leaves the device.</p>
         </li>
         <li class="caption" data-step="3">
-          <span class="caption-kicker">Underneath · release</span>
+          <span class="caption-kicker mono">Take 4 · Release</span>
           <h2>A pipeline before a feature</h2>
           <p>1,000+ automated tests, Playwright E2E and visual tests, Firebase emulator security-rule tests, and a 270 KB gzipped startup budget the build fails on. One-tap in-app bug reporting so users tell me before the store does.</p>
         </li>
@@ -101,19 +135,41 @@
   </div>
 </section>
 
-<section class="numbers" id="facts" data-nav="Facts" aria-label="Facts">
-  <div class="num"><strong>1.1K</strong><span><a href="https://www.youtube.com/@TaqwaPrayer">subscribers</a> on the app's own channel</span></div>
-  <div class="num"><strong>11</strong><span>languages, RTL included</span></div>
-  <div class="num"><strong>1,000+</strong><span>automated tests per build</span></div>
-  <div class="num"><strong>270 KB</strong><span>gzipped startup budget</span></div>
+<section class="numbers-wrap" id="facts" data-nav="Facts" aria-label="Facts">
+  <span class="ghost" aria-hidden="true">03</span>
+  <div class="slate mono"><span><b>SC. 03 / 05</b> — Facts</span><span>Measured, not estimated</span></div>
+  <div class="numbers">
+    <div class="num"><strong data-count="33" data-suffix="K">33K</strong><span class="mono"><a href="https://www.instagram.com/taqwa_prayer/">Instagram followers</a>, Taqwa's own account</span></div>
+    <div class="num"><strong data-count="3.5" data-dec="1" data-suffix="K">3.5K</strong><span class="mono"><a href="https://www.youtube.com/@TaqwaPrayer">YouTube subscribers</a>, same app</span></div>
+    <div class="num"><strong data-count="1000" data-sep="1" data-suffix="+">1,000+</strong><span class="mono">Automated tests per Taqwa build</span></div>
+    <div class="num"><strong data-count="11">11</strong><span class="mono">Languages, RTL included</span></div>
+  </div>
 </section>
 
 <section class="also" id="also" data-nav="Meritee">
-  <h2 class="section-title">Also shipped</h2>
+  <span class="ghost" aria-hidden="true">04</span>
+  <div class="slate mono"><span><b>SC. 04 / 05</b> — Also shipped</span><span>2025 – present</span></div>
+  <article class="card card-lex">
+    <div class="card-lex-text">
+      <h3><a href="https://apps.apple.com/app/id6829423129">Lexorbit</a> — learn languages from real videos</h3>
+      <p>Tap any word in a video's subtitles and get its meaning at your level: <em>compré</em> leads to <em>comprar</em>. Save it, and spaced review (FSRS) brings it back before you forget it. A short level test picks videos you'll mostly understand.</p>
+      <p>One Expo codebase for iOS, Android and web, on Supabase Edge Functions with row-level security on every table and usage limits enforced server-side. RevenueCat subscriptions. An ~8,000-word dictionary pre-generated with the Batch API, so a tap costs no LLM call. iOS home-screen widget and Live Activity.</p>
+      <p class="meta mono">React Native · Expo · TypeScript · Supabase · Claude API · RevenueCat · 2026</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="https://apps.apple.com/app/id6829423129">App Store ↗</a>
+        <span class="btn btn-ghost" aria-disabled="true">Google Play · closed testing</span>
+      </div>
+    </div>
+    <div class="phones">
+      <img src="assets/lexorbit-1.webp" alt="Lexorbit home: your path today, words you know, level estimate" width="618" height="1339" loading="lazy">
+      <img src="assets/lexorbit-2.webp" alt="Lexorbit player: tap a subtitle word and its meaning appears instantly" width="618" height="1339" loading="lazy">
+      <img src="assets/lexorbit-3.webp" alt="Lexorbit review: saved words come back right before you forget them" width="618" height="1339" loading="lazy">
+    </div>
+  </article>
   <article class="card">
     <h3><a href="https://merite-app.web.app">Meritee</a> — gamified productivity platform</h3>
     <p>Offline-first web app on Firebase: instant local hydration with debounced Firestore sync, scheduled personalised push on Cloud Functions v2, real-time friend requests, and a reward economy behind field-level security rules.</p>
-    <p class="meta">React · TypeScript · Cloud Functions v2 · Firestore · FCM · 2025–present</p>
+    <p class="meta mono">React · TypeScript · Cloud Functions v2 · Firestore · FCM</p>
     <div class="gallery">
       <figure class="browser"><div class="browser-bar"><i></i><i></i><i></i></div><img src="assets/meritee-1.webp" alt="Meritee activity dictionary: user-defined activities with units and point multipliers" width="1280" height="720" loading="lazy"></figure>
       <figure class="browser"><div class="browser-bar"><i></i><i></i><i></i></div><img src="assets/meritee-2.webp" alt="Meritee profile: level, statues and monuments, badge collection" width="1280" height="720" loading="lazy"></figure>
@@ -122,8 +178,9 @@
 </section>
 
 <section class="internship" id="internship" data-nav="Internship">
-  <h2 class="section-title">What I'm looking for</h2>
-  <p class="big">
+  <span class="ghost" aria-hidden="true">05</span>
+  <div class="slate mono"><span><b>SC. 05 / 05</b> — What I'm looking for</span><span>Cut to you</span></div>
+  <p class="big js-scrub">
     A <strong>3-month software engineering internship in summer 2027</strong> — mobile, web or full-stack — at a company in
     France, Belgium, Luxembourg, Germany or the Netherlands.
   </p>
@@ -142,8 +199,8 @@
 
 </main>
 
-<footer class="foot">
-  <span>© 2026 Kerem Yiğit Elbasan</span>
+<footer class="foot mono">
+  <span>© 2026 Kerem Yiğit Elbasan · End of reel</span>
   <nav>
     <a href="https://github.com/nydeilith">GitHub</a>
     <a href="https://www.linkedin.com/in/key51">LinkedIn</a>
